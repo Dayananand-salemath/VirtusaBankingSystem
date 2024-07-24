@@ -4,10 +4,12 @@ using BankingAPI.Domain.Entities;
 
 namespace BankingAPI.Application.BankAccounts.Handlers
 {
+    // Handler to handle GetBankAccountByIdQuery
     public class GetBankAccountByIdHandler : IRequestHandler<GetBankAccountByIdQuery, BankAccount>
     {
         private readonly List<BankAccount> _bankAccounts;
 
+        // Initializing with mock data
         public GetBankAccountByIdHandler()
         {
             _bankAccounts = new List<BankAccount>
@@ -17,6 +19,7 @@ namespace BankingAPI.Application.BankAccounts.Handlers
             };
         }
 
+        // Handle method to process the query
         public Task<BankAccount> Handle(GetBankAccountByIdQuery request, CancellationToken cancellationToken)
         {
             var account = _bankAccounts.FirstOrDefault(a => a.Id == request.Id);
